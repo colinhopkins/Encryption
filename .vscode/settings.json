@@ -1,0 +1,20 @@
+{
+    "files.associations": {
+        "__node_handle": "c",
+        "bitset": "c",
+        "vector": "c",
+        "memory": "c",
+        "optional": "c",
+        "string_view": "c",
+        "string": "c",
+        "system_error": "c",
+        "thread": "c",
+        "__locale": "c",
+        "__threading_support": "c",
+        "type_traits": "c",
+        "utility": "c",
+        "random": "c",
+        "queue": "c",
+        "stack": "c"
+    }
+}

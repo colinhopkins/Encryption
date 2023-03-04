@@ -1,27 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <string.h>
+
+unsigned long hash(unsigned char *str)
+{
+	unsigned long hash = 5381;
+	int c;
+	while (c = *str++)
+		hash = ((hash << 5) + hash) + c;
+	return hash;
+}
 
 int main(int argc, char **argv)
 {
-
-	srand(time(0)); // Use the current time as the seed for random generator
-
 	if (argc != 2)
 	{
 		fprintf(stderr, "Please invoke as %s <key>\n", argv[0]);
-		return 1; // Indicate something went wrong
+		return 1;
 	}
-	char *key=argv[1];
-	int nextChar = getchar();
-	while (nextChar != EOF)
+
+	char *key = argv[1];
+	unsigned long shift = hash(key);
+	int next_char = getchar();
+	while (next_char != EOF)
 	{
-		/* TODO:
-			Using the key, write an encoded character to standard out
-			For example, if you encode nextChar and save it in variable enCoded,
-			You can use: putchar(enCoded);
-		*/
-		nextChar = getchar();
+		if (next_char >= 'A' && next_char <= 'Z')
+		{
+			next_char += 'a' - 'A';
+		}
+		if ((next_char >= 'a' && next_char <= 'z') || (next_char >= '0' && next_char <= '9'))
+		{
+			int decoded_char = (next_char - 'a' + (26 - (shift % 26))) % 26 + 'a';
+			putchar(decoded_char);
+		}
+		else
+		{
+			putchar(next_char);
+		}
+		next_char = getchar();
 	}
-	return 0; // Indicate nothing went wrong
+
+	return 0;
 }
