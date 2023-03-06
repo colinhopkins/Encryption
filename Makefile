@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -std=c18 -ggdb
-KEY="key" # Change this to a valid key for your encode/decode
-KEY2="key"
+KEY="myKey" # Change this to a valid key for your encode/decode
+KEY2="myKey"
 
 test : encode decode test.txt
 	./encode ${KEY} <test.txt >test_encode.txt

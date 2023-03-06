@@ -3,10 +3,29 @@
 unsigned long hash(unsigned char *str) {
     unsigned long hash = 5381;
     int c;
-    while ((c = *str++))
-        hash = ((hash << 5) + hash) + c;
+    while ((c = *str++)) {
+        if (c >= 'A' && c <= 'Z') {
+            hash = ((hash << 5) + hash) + (c - 'A' + 1);
+        } else {
+            hash = ((hash << 5) + hash) + c;
+        }
+    }
     return hash;
 }
+
+
+unsigned char encode_char(unsigned char c, unsigned long shift) {
+    if (c >= 'a' && c <= 'z') {
+        return (c - 'a' + shift) % 26 + 'a';
+    } else if (c >= 'A' && c <= 'Z') {
+        return (c - 'A' + shift) % 26 + 'A';
+    } else if (c >= '0' && c <= '9') {
+        return (c - '0' + shift) % 10 + '0';
+    } else {
+        return c;
+    }
+}
+
 
 int main(int argc, char **argv) {
     if (argc != 2) {
@@ -16,19 +35,11 @@ int main(int argc, char **argv) {
 
     unsigned char *key = (unsigned char *) argv[1];
     unsigned long shift = hash(key);
+
     int next_char = getchar();
     while (next_char != EOF) {
-        if (next_char >= 'A' && next_char <= 'Z') {
-            next_char += 'a' - 'A';
-        }
-        if ((next_char >= 'a' && next_char <= 'z')) {
-            int encoded_char = (next_char - 'a' + shift) % 26 + 'a';
-            putchar(encoded_char);
-        } else if (next_char == ' ' || next_char == '\t' || next_char == '\n') {
-            putchar(next_char);
-        } else {
-            putchar(next_char);
-        }
+        unsigned char encoded_char = encode_char(next_char, shift);
+        putchar(encoded_char);
         next_char = getchar();
     }
 
