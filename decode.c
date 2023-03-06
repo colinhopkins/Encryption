@@ -21,6 +21,8 @@ unsigned char decode_char(unsigned char c, unsigned long shift) {
         return (c - 'A' + (26 - (shift % 26))) % 26 + 'A';
     } else if (c >= '0' && c <= '9') {
         return (c - '0' + (10 - (shift % 10))) % 10 + '0';
+    } else if( c == ' ' || c == '\t' || c== '\n'){
+        return c;
     } else {
         return c;
     }
