@@ -1,11 +1,12 @@
 CC = gcc
 CFLAGS = -Wall -std=c18 -ggdb
-KEY="testKey" # Change this to a valid key for your encode/decode
+KEY="key" # Change this to a valid key for your encode/decode
+KEY2="key"
 
 test : encode decode test.txt
 	./encode ${KEY} <test.txt >test_encode.txt
 	cat test_encode.txt
-	./decode ${KEY} <test_encode.txt >test_decode.txt
+	./decode ${KEY2} <test_encode.txt >test_decode.txt
 	diff -i test.txt test_decode.txt
 	
 	

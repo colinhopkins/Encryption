@@ -1,12 +1,10 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 unsigned long hash(unsigned char *str)
 {
 	unsigned long hash = 5381;
 	int c;
-	while (c = *str++)
+	while ((c = *str++))
 		hash = ((hash << 5) + hash) + c;
 	return hash;
 }
@@ -19,7 +17,7 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	char *key = argv[1];
+	unsigned char *key = (unsigned char *)argv[1];
 	unsigned long shift = hash(key);
 	int next_char = getchar();
 	while (next_char != EOF)
@@ -28,7 +26,7 @@ int main(int argc, char **argv)
 		{
 			next_char += 'a' - 'A';
 		}
-		if ((next_char >= 'a' && next_char <= 'z') || (next_char >= '0' && next_char <= '9'))
+		if ((next_char >= 'a' && next_char <= 'z'))
 		{
 			int decoded_char = (next_char - 'a' + (26 - (shift % 26))) % 26 + 'a';
 			putchar(decoded_char);

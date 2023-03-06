@@ -1,20 +1,23 @@
 {
-    "files.associations": {
-        "__node_handle": "c",
-        "bitset": "c",
-        "vector": "c",
-        "memory": "c",
-        "optional": "c",
-        "string_view": "c",
-        "string": "c",
-        "system_error": "c",
-        "thread": "c",
-        "__locale": "c",
-        "__threading_support": "c",
-        "type_traits": "c",
-        "utility": "c",
-        "random": "c",
-        "queue": "c",
-        "stack": "c"
-    }
+  "files.associations": {
+    "__node_handle": "c",
+    "bitset": "c",
+    "vector": "c",
+    "memory": "c",
+    "optional": "c",
+    "string_view": "c",
+    "string": "c",
+    "system_error": "c",
+    "thread": "c",
+    "__locale": "c",
+    "__threading_support": "c",
+    "type_traits": "c",
+    "utility": "c",
+    "random": "c",
+    "queue": "c",
+    "stack": "c"
+  },
+  "C_Cpp.intelliSenseCacheSize": 0,
+  "C_Cpp.intelliSenseMemoryLimit": 256,
+  "terminal.integrated.enablePersistentSessions": false
 }
