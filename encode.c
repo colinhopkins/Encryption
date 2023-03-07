@@ -4,27 +4,24 @@ unsigned long hash(unsigned char *str) {
     unsigned long hash = 5381;
     int c;
     while ((c = *str++)) {
-        if (c >= 'A' && c <= 'Z') {
-            hash = ((hash << 5) + hash) + (c - 'A' + 1);
-        } else {
-            hash = ((hash << 5) + hash) + c;
-        }
+        hash = ((hash << 5) + hash) + (c + 1);
     }
     return hash;
 }
+
 
 
 unsigned char encode_char(unsigned char c, unsigned long shift) {
     if (c >= 'a' && c <= 'z') {
         return (c - 'a' + shift) % 26 + 'a';
     } else if (c >= 'A' && c <= 'Z') {
-        return (c - 'A' + shift) % 26 + 'A';
+        return (c - 'A' + shift) % 26 + 'a';
     } else if (c >= '0' && c <= '9') {
         return (c - '0' + shift) % 10 + '0';
     } else if( c == ' ' || c == '\t' || c== '\n'){
         return c;
     } else {
-        return c;
+        return 42;
     }
 }
 
