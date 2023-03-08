@@ -1,11 +1,11 @@
-##Caesar Cipher Implementation in C
+## Caesar Cipher Implementation in C
 
 This is a implementation of the Caesar Cipher algorithm in C. The Caesar Cipher is a simple substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet.
 
 This implementation allows the user to encrypt and decrypt text using a key provided as a command line argument. The key is used to generate a shift value, which is applied to each character in the input text to produce the output text.
 
 
-#Implementation Details
+# Implementation Details
 
 The implementation of the Caesar Cipher in this project is fairly straightforward. The key is passed as a command line argument and is used to generate a shift value using a simple hash function based on the djb2 hash algorithm. The hash function generates a hash value by iterating through each byte in the input string and combining it with a running hash value using a bit shift and addition operation.
 
