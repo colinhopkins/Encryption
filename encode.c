@@ -21,7 +21,7 @@ unsigned char encode_char(unsigned char c, unsigned long shift) {
     } else if( c == ' ' || c == '\t' || c== '\n'){
         return c;
     } else {
-        return 42;
+        return c;
     }
 }
 
