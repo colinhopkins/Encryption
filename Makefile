@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -std=c18 -ggdb
-KEY="mykeycolinhopkins" # Change this to a valid key for your encode/decode
+KEY="mykeycolinhopkins"
 KEY2="mykeycolinhopkins"
 
 test : encode decode test.txt
